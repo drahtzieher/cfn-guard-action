@@ -1,0 +1,28 @@
+name: 'cfn-guard-action'
+description: 'Guard ShiftLeft'
+author: Drahtzieher
+inputs:
+  cfn_guard_link:
+    description: 'link to the public cfn-guard image on ECR'
+    required: false
+    default: "public.ecr.aws/aws-cloudformation/cloudformation-guard:latest"
+  data_directory:
+    description: 'directory within git repo to scan cloudformation templates'
+    required: true
+  show_summary:
+    description: 'cfn-guard summary output. Options are all, pass, fail, skip or none'
+    required: false
+    default: "fail"
+  output_format:
+    description: 'cfn-guard summary output. Options are json, yaml, single-line-summary'
+    required: false
+    default: "single-line-summary"
+  rule_set:
+    description: 'scanner used to run security test. Options are a lot, please read documentation.'
+    required: true
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  icon: shield
+  color: orange
