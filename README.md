@@ -1,4 +1,4 @@
-Disclaimer: This is based on @grolston/guard-action, which is not using a valid cfn-guard docker image link. My version allows to provide the link as an action input.
+This is based on @grolston/guard-action, which is not using a valid cfn-guard docker image link. My version allows to provide the link as an action input.
 
 # Guard-Action
 
