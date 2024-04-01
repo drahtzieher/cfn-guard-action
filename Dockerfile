@@ -1,6 +1,6 @@
 ARG CFN_GUARD_LINK
 # Container image that runs your code
-FROM $CFN_GUARD_LINK
+FROM public.ecr.aws/aws-cloudformation/cloudformation-guard:latest
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
