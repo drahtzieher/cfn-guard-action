@@ -1,4 +1,3 @@
-ARG CFN_GUARD_LINK
 # Container image that runs your code
 FROM public.ecr.aws/aws-cloudformation/cloudformation-guard:latest
 

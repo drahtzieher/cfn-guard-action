@@ -1,4 +1,5 @@
 #!/bin/sh
+echo "Starting, checking data directory"
 
 if [ -z "$INPUT_DATA_DIRECTORY" ]; then
   echo "Environment variable DATA_DIRECTORY is not set. Quitting."
@@ -9,6 +10,8 @@ if [ ! -d "$INPUT_DATA_DIRECTORY" ]; then
   echo "${INPUT_DATA_DIRECTORY} path not found. Quitting."
   exit 1
 fi
+
+echo "data directory found, selecting rule set"
 
 case $INPUT_RULE_SET in
 
