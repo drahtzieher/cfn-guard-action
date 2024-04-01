@@ -6,8 +6,8 @@ if [ -z "$INPUT_DATA_DIRECTORY" ]; then
   exit 1
 fi
 
-if [ ! -d "$INPUT_DATA_DIRECTORY" ]; then
-  echo "${INPUT_DATA_DIRECTORY} path not found. Quitting."
+if [ ! -e "$INPUT_DATA_DIRECTORY" ]; then
+  echo "${INPUT_DATA_DIRECTORY} not found. Quitting."
   exit 1
 fi
 
