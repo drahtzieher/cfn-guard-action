@@ -14,7 +14,7 @@ fi
 echo "data directory found, selecting rule set"
 
 # Define the command prefix
-command_prefix="/usr/src/cloudformation-guard/cfn-guard validate --data ${INPUT_DATA_DIRECTORY} --show-summary ${INPUT_SHOW_SUMMARY} --output-format ${INPUT_OUTPUT_FORMAT}"
+command_prefix="cfn-guard validate --data ${INPUT_DATA_DIRECTORY} --show-summary ${INPUT_SHOW_SUMMARY} --output-format ${INPUT_OUTPUT_FORMAT}"
 
 # Check if the INPUT_RULE_SET is set
 if [ -z "$INPUT_RULE_SET" ]; then
