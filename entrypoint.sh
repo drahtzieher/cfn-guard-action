@@ -29,7 +29,7 @@ IFS=',' read -ra RULE_SETS <<< "$INPUT_RULE_SET"
 # Iterate over each rule set
 for rule_set in "${RULE_SETS[@]}"; do
   # Construct the full command based on the rule set
-  full_command="${command_prefix} --rules /${rule_set}.guard"
+  full_command="${command_prefix} --rules /guard-files/${rule_set}.guard"
 
   echo "Running: ${full_command}"
   # Execute the command
