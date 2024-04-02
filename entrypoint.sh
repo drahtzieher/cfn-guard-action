@@ -1,6 +1,7 @@
 #!/bin/sh
 echo "Starting, checking data directory"
-
+echo "find -type f -name '*.guard'"
+find -type f -name "*.guard"
 if [ -z "$INPUT_DATA_DIRECTORY" ]; then
   echo "Environment variable DATA_DIRECTORY is not set. Quitting."
   exit 1
@@ -22,8 +23,15 @@ if [ -z "$INPUT_RULE_SET" ]; then
   exit 1
 fi
 
-# Construct the full command based on the rule set
-full_command="${command_prefix} --rules /${INPUT_RULE_SET}.guard"
+# Split the comma-separated rule sets
+IFS=',' read -ra RULE_SETS <<< "$INPUT_RULE_SET"
 
-echo "Running: ${full_command}"
-sh -c "${full_command}"
+# Iterate over each rule set
+for rule_set in "${RULE_SETS[@]}"; do
+  # Construct the full command based on the rule set
+  full_command="${command_prefix} --rules /${rule_set}.guard"
+
+  echo "Running: ${full_command}"
+  # Execute the command
+  sh -c "${full_command}"
+done

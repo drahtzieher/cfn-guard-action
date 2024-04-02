@@ -1,4 +1,12 @@
-This is based on @grolston/guard-action, which is not using a valid cfn-guard docker image link. My version allows to provide the link as an action input.
+This is based on @grolston/guard-action, which is based on an outdated version of the CFN Guard docker image. Technically it is a fork but I have decided to keep it completely separate due to the low complexity of the project.
+Additional features/differences:
+1. The rule sets are built based on https://github.com/aws-cloudformation/aws-guard-rules-registry
+2. You can supply a comma-separated list of rule sets in your workflow and it will iterate through them
+
+***This README.md hasn't been updated yet, I recommend reading the readmes of
+* https://github.com/aws-cloudformation/aws-guard-rules-registry
+* https://github.com/aws-cloudformation/cloudformation-guard
+***
 
 # Guard-Action
 
@@ -70,6 +78,8 @@ The AWS Guard rule set used to run security test. Options are:
 | New York State Department Of Financial Services (NYDFS) cybersecurity requirements for financial services companies (23 NYCRR 500) | us-nydfs |
 | Amazon Web Services' Well-Architected Framework Reliability Pillar | wa-Reliability-Pillar |
 | AWS Guard rule set for Amazon Web Services' Well-Architected Framework Security Pillar | wa-Security-Pillar |
+| CFN Nag equivalent rule set | cfn-nag-equivalent |
+| AWS Cloudformation Guard Registry All Rules | guard-rules-registry-all-rules |
 
 ## Usage
 
