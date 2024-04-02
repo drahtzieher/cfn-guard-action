@@ -1,12 +1,16 @@
+**Only tested on Gitea, not on Github**
 This is based on @grolston/guard-action, which is based on an outdated version of the CFN Guard docker image. Technically it is a fork but I have decided to keep it completely separate due to the low complexity of the project.
-Additional features/differences:
+Differences:
 1. The rule sets are built based on https://github.com/aws-cloudformation/aws-guard-rules-registry
 2. You can supply a comma-separated list of rule sets in your workflow and it will iterate through them
+3. it uses public.ecr.aws/aws-cloudformation/cloudformation-guard:latest
 
 ***This README.md hasn't been updated yet, I recommend reading the readmes of
 * https://github.com/aws-cloudformation/aws-guard-rules-registry
 * https://github.com/aws-cloudformation/cloudformation-guard
 ***
+
+If needed, it can modified to also accept custom rules from a folder in the repo. Currently, entrypoint.sh only looks for rule sets in the /guard-rules directory but not in the /workspace/<cloned repo to be scanned> directory.
 
 # Guard-Action
 
@@ -99,11 +103,12 @@ jobs:
   sast-guard:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: grolston/guard-action@main
+    - uses: actions/checkout@v4
+    - name: cfn guard action
+      uses: https://github.com/drahtzieher/cfn-guard-action@v0.0.9
       with:
-        data_directory: './cloudformation/' ## change to your template directory
-        rule_set: "FedRAMP-Moderate"
+        data_directory: 'template.yaml' ## change to your template directory
+        rule_set: "NIST800-53Rev5, hipaa-security"
 ```
 
 The following example tests CloudFormation with the `cis-aws-benchmark-level-1` example rule set:
