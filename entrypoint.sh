@@ -23,12 +23,8 @@ if [ -z "$INPUT_RULE_SET" ]; then
   exit 1
 fi
 
-# Replace commas with newlines and read into an array
-IFS=$'\n' RULE_SETS=($(echo "$INPUT_RULE_SET" | tr ',' '\n'))
-
-
 # Iterate over each rule set
-for rule_set in "${RULE_SETS[@]}"; do
+echo "$INPUT_RULE_SET" | tr ',' '\n' | while read -r rule_set; do
   # Construct the full command based on the rule set
   full_command="${command_prefix} --rules /guard-files/${rule_set}.guard"
 
