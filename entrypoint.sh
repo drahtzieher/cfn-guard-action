@@ -23,8 +23,9 @@ if [ -z "$INPUT_RULE_SET" ]; then
   exit 1
 fi
 
-# Split the comma-separated rule sets
-IFS=',' read -ra RULE_SETS <<< "$INPUT_RULE_SET"
+# Replace commas with newlines and read into an array
+IFS=$'\n' RULE_SETS=($(echo "$INPUT_RULE_SET" | tr ',' '\n'))
+
 
 # Iterate over each rule set
 for rule_set in "${RULE_SETS[@]}"; do
